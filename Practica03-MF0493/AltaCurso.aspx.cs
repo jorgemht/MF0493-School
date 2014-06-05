@@ -16,7 +16,7 @@ namespace Practica03_MF0493
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx", true);
+            Response.Redirect("ListarCurso.aspx", true);
         }
 
         protected void Enviar_Click(object sender, EventArgs e)
