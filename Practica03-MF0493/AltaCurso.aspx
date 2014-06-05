@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row">
          <div class="col-md-offset-1 col-md-4">
-             <asp:Button CssClass="btn btn-lg" ID="Button2" runat="server" Text="Volver" OnClientClick="return confirm('¿Estas seguro?');" OnClick="Button1_Click" />
+             <asp:Button CssClass="btn btn-lg" ID="btnVolver" runat="server" Text="Volver" OnClientClick="return confirm('¿Estas seguro?');" OnClick="btnVolver_Click" />
          </div>
          <div class="col-md-8 col-md-offset-2">
             <h1 class="text-center">Alta curso</h1>
@@ -52,12 +52,12 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                  ErrorMessage="El campo no se puede quedar vacio" ControlToValidate="Departamento_curso" CssClass="alert-danger"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
-                                 ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{4}$" CssClass="alert-danger" ControlToValidate="Departamento_curso"></asp:RegularExpressionValidator>
+                                 ErrorMessage="Introduzca un numero de departamento válido (1,2,4,7)" ValidationExpression="^[1,2,4,7]{1}$" CssClass="alert-danger" ControlToValidate="Departamento_curso"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                         
                     <tr>
-                        <td colspan="3"><asp:Button CssClass="btn btn-lg btn-success col-md-offset-5" ID="Button1" runat="server" Text="Enviar" /></td>
+                        <td colspan="3"><asp:Button CssClass="btn btn-lg btn-success col-md-offset-5" ID="Enviar" runat="server" Text="Enviar" OnClick="Enviar_Click" /></td>
                     </tr>
                 </table>
             </div>
