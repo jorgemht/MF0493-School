@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practica03_MF0493.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,11 @@ namespace Practica03_MF0493
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            CourseManager curso = new CourseManager();
+            GridView1.DataSource = curso.getAll();
+            GridView1.DataBind();
+
 
         }
     }
