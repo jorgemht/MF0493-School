@@ -14,7 +14,33 @@ namespace Practica03_MF0493
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void addPersona(object sender, EventArgs e)
+        {
+            if (this.IsPostBack)
+            {
+                this.Validate();
+                if (this.IsValid)
+                {
+                    Practica03_MF0493.Models.Person persona = new Practica03_MF0493.Models.Person();
+
+                    persona.PersonID++;
+                    persona.FirstName = this.Nombre_alumno.Text;
+                    persona.LastName = this.Apellido_alumno.Text;
+                    persona.HireDate = Convert.ToDateTime(this.Fecha_alta.Text);
+                    persona.EnrollmentDate = Convert.ToDateTime(this.Fecha_matricula.Text);
+
+                    Person p = new Person(); // Me creo un objeto de tipo persona
+
+                    int PersonID = p.Add(persona); // Al objeto p le voy añadir el objeto persona
+
+                    Response.Redirect("Default.aspx");
+                
+                }
+            }
+            Response.Redirect("Default.aspx", true);
+        }
+
+        protected void volverMenu(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx", true);
         }
