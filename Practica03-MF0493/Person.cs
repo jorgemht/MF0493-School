@@ -1,12 +1,13 @@
 ﻿using Practica03_MF0493.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Practica03_MF0493
 {
-    public class Person:IPerson
+    public class PersonManager:IPerson
     {
         /// <summary>
         ///  Atributos del objeto Person
@@ -21,26 +22,32 @@ namespace Practica03_MF0493
         /// Metodo que nos da un listado de las personas
         /// </summary>
         /// <returns></returns>
-        public List<Person> getAll()
+        public List<PersonManager> getAll()
         {
-            List<Person> person = new List<Person>();
+            List<PersonManager> person = new List<PersonManager>();
             try
             {
                 using (cntSchool db = new cntSchool())
                 {
                     var consulta = from persona in db.Person
-                                   select new Person()
-                                   {
-                                       PersonID = persona.PersonID,
-                                       LastName = persona.LastName,
-                                       FirstName = persona.FirstName,
-                                       HireDate = (DateTime)persona.HireDate,
-                                       EnrollmentDate = (DateTime)persona.EnrollmentDate,
-                                   };
+                                   select persona;
 
-                    person = consulta.ToList();
+                    foreach (Person persona in consulta)
+                    {
+                        PersonManager perData = new PersonManager()
+                        {
+                            PersonID = persona.PersonID,
+                            LastName = persona.LastName,
+                            FirstName = persona.FirstName,
+                        };
+                        if (persona.HireDate.HasValue)
+                            perData.HireDate = new DateTime(persona.HireDate.Value.Ticks);
+                        if (persona.EnrollmentDate.HasValue)
+                            perData.EnrollmentDate = new DateTime(persona.EnrollmentDate.Value.Ticks);
+                        person.Add(perData);
+                    }
+                    return person;
                 }
-                return person;
             }
             catch (Exception ex)
             {
@@ -52,9 +59,9 @@ namespace Practica03_MF0493
         /// </summary>
         /// <param name="PersonID">Recibe el ID de la persona y lo busca</param>
         /// <returns>Devuelve la persona si todo es ok, si no devuelve un exception</returns>
-        public Person get(int PersonID)
+        public PersonManager get(int PersonID)
         {
-            Person xpersona = new Person(); // Me creo un objeto de tipo persona
+            PersonManager xpersona = new PersonManager(); // Me creo un objeto de tipo persona
             try
             {
                 // Creamos una conexion a la bd
@@ -62,7 +69,7 @@ namespace Practica03_MF0493
                 {
                     // Realizamos una consulta, donde vamos a buscar a una persona por su id
                     var consulta = from persona in db.Person where persona.PersonID == PersonID
-                                   select new Person
+                                   select new PersonManager
                                    {
                                        PersonID = persona.PersonID,
                                        LastName = persona.LastName,
@@ -110,7 +117,7 @@ namespace Practica03_MF0493
         /// <returns>Devuelve true </returns>
         public bool Remove(int PersonID)
         {
-            Person xpersona = new Person(); // Me creo un objeto de tipo persona
+            PersonManager xpersona = new PersonManager(); // Me creo un objeto de tipo persona
             try
             {
                 // Creamos una conexion a la bd
@@ -134,7 +141,7 @@ namespace Practica03_MF0493
         }
 
 
-        public int Add(Person p)
+        public int Add(PersonManager p)
         {
             throw new NotImplementedException();
         }

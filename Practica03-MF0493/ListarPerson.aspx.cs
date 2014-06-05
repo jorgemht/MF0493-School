@@ -11,7 +11,13 @@ namespace Practica03_MF0493
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!this.IsPostBack)
+            {
+                PersonManager persona = new PersonManager();
 
+                GridView1.DataSource = persona.getAll();
+                GridView1.DataBind();
+            }
         }
     }
 }
