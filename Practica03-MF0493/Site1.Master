@@ -4,17 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Practica</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+
+        <nav>
+            <ol class="breadcrumb">
+              <li class="active"><a href="#">Menu Principal</a></li>
+              <li><a href="#">Añadir Curso</a></li>
+              <li><a href="#">Añadir Persona</a></li>
+              <li><a href="#">Listar Curso</a></li>
+              <li><a href="#">Listar Persona</a></li>
+            </ol>
+        </nav>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
-    </div>
+
+        <footer></footer>
+ 
     </form>
 </body>
 </html>

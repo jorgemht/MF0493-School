@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Practica03_MF0493
 {
-    interface Ioperaciones
+    interface ICurso
     {
-        public int getAll();
-        public void get(int ID);
-        public void Add(Person p);
-        public bool Remove(int ID);
+
+        List<Course> getAll();
+        Course get(int CourseID);
+        int Add(Course p);
+        bool Remove(int CourseID);
     }
 }
