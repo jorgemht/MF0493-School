@@ -95,6 +95,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Course.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -119,6 +120,7 @@
     <Compile Include="Models\Person.cs">
       <DependentUpon>ModeloBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
