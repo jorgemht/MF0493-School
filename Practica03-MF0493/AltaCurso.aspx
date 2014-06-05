@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row">
          <div class="col-md-offset-1 col-md-4">
-             <asp:Button CssClass="btn btn-lg" ID="btnVolver" runat="server" Text="Volver" OnClientClick="return confirm('¿Estas seguro?');" OnClick="btnVolver_Click" />
+             <asp:Button CssClass="btn btn-lg" ID="Button2" runat="server" Text="Volver" OnClientClick="return confirm('¿Estas seguro?');" OnClick="Button1_Click" />
          </div>
          <div class="col-md-8 col-md-offset-2">
             <h1 class="text-center">Alta curso</h1>
@@ -19,7 +19,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                              ErrorMessage="El campo no se puede quedar vacio" ControlToValidate="Id_curso" CssClass="alert-danger"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                             ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{2}$" CssClass="alert-danger" ControlToValidate="Id_curso"></asp:RegularExpressionValidator>
+                             ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{4}$" CssClass="alert-danger" ControlToValidate="Id_curso"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
 
@@ -52,12 +52,12 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                  ErrorMessage="El campo no se puede quedar vacio" ControlToValidate="Departamento_curso" CssClass="alert-danger"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
-                                 ErrorMessage="Solo se admiten 1,2,4,7. Los departamentos." ValidationExpression="^[1,2,4,7]{1}$" CssClass="alert-danger" ControlToValidate="Departamento_curso"></asp:RegularExpressionValidator>
+                                 ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{4}$" CssClass="alert-danger" ControlToValidate="Departamento_curso"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                         
                     <tr>
-                        <td colspan="3"><asp:Button CssClass="btn btn-lg btn-success col-md-offset-5" ID="Enviar" runat="server" Text="Enviar" OnClick="Enviar_Click" /></td>
+                        <td colspan="3"><asp:Button CssClass="btn btn-lg btn-success col-md-offset-5" ID="Button1" runat="server" Text="Enviar" /></td>
                     </tr>
                 </table>
             </div>
