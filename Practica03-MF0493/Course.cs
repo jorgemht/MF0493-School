@@ -5,7 +5,8 @@ using System.Web;
 
 namespace Practica03_MF0493
 {
-    public class Course
+    public class Course:Ioperaciones
     {
+
     }
 }
