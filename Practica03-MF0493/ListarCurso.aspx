@@ -2,14 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Lista de cursos</h1>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-    <Columns>
-        <asp:BoundField DataField="CourseID" HeaderText="Id del curso" />
-        <asp:BoundField DataField="Title" HeaderText="Nombre del curso" />
-        <asp:BoundField DataField="Credits" HeaderText="Creditos del curso" />
-        <asp:BoundField DataField="DepartmentID" HeaderText="Departamento del curso" />
-        <asp:CommandField ShowDeleteButton="True" />
-    </Columns>
-    </asp:GridView>
+    <div class="container">
+        <form id="formListarCurso" runat="server">
+
+            <h1>Lista de cursos</h1>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-hover">
+                <Columns>
+                    <asp:BoundField DataField="CourseID" HeaderText="Id del curso" />
+                    <asp:BoundField DataField="Title" HeaderText="Nombre del curso" />
+                    <asp:BoundField DataField="Credits" HeaderText="Creditos del curso" />
+                    <asp:BoundField DataField="DepartmentID" HeaderText="Departamento del curso" />
+                    <asp:CommandField ShowDeleteButton="True" />
+                </Columns>
+            </asp:GridView>
+        </form>
+    </div>
 </asp:Content>
