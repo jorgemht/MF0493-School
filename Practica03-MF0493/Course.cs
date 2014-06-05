@@ -161,7 +161,7 @@ namespace Practica03_MF0493
             {
                 using (cntSchool cnt = new cntSchool())
                 {
-                    Practica03_MF0493.Models.Course curso = new  Practica03_MF0493.Models.Course();
+                    Course curso = new  Course();
 
                     curso.CourseID = p.CourseID;
                     curso.Credits = p.Credits;
@@ -174,7 +174,7 @@ namespace Practica03_MF0493
                     return p.CourseID;
                 }
             }
-            catch
+            catch (Exception e)
             {
                 return -1;
             }
