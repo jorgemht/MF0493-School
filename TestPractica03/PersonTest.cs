@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Practica03_MF0493;
+using Practica03_MF0493.Models;
 
 namespace TestPractica03
 {
@@ -13,45 +15,40 @@ namespace TestPractica03
             List<Practica03_MF0493.Models.Person> people = new List<Practica03_MF0493.Models.Person>();
             Practica03_MF0493.PersonManager persona = new Practica03_MF0493.PersonManager();
             people = persona.getAll();
-            Assert.AreEqual(people.Count, 44);
+            Assert.AreEqual(people.Count, 46);
         }
 
         [TestMethod]
         public void getTest()
         {
-            Practica03_MF0493.Models.Person people = new Practica03_MF0493.Models.Person();
-            //Practica03_MF0493.Person persona = new Practica03_MF0493.Person();
+            PersonManager people = new PersonManager();
+           
 
-            //persona.get(6);
+            Person personaPrueba= people.get(6);
 
-            people.PersonID = 6;
-
-
-            Assert.AreEqual(people.FirstName, "Li");
+            Assert.AreEqual(personaPrueba.FirstName, "Li");
         }
 
         [TestMethod]
-        public void addTest()
+        public void addRemoveTest()
         {
 
             Practica03_MF0493.Models.Person people = new Practica03_MF0493.Models.Person();
             people.FirstName = "Aitor";
             people.LastName = "Tilla";
+            
 
             Practica03_MF0493.PersonManager persona = new Practica03_MF0493.PersonManager();
 
             int idPerson = persona.Add(people);
 
-            Assert.AreEqual(people.PersonID, 41);
+            Assert.AreEqual(people.PersonID, 53);
+
+            bool eliminado=persona.Remove(53);
+
+            Assert.AreEqual(eliminado, true);
         }
 
-        [TestMethod]
-        public void removeTest()
-        {
-            Practica03_MF0493.PersonManager persona = new Practica03_MF0493.PersonManager();
-
-            bool delete = persona.Remove(41);
-            Assert.AreEqual(delete, true);
-        }
+       
     }
 }
