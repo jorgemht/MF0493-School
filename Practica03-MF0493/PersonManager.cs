@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Practica03_MF0493
 {
-    public class Person:IPerson
+    public class PersonManager:IPerson
     {
         /// <summary>
         ///  Atributos del objeto 
@@ -17,7 +17,7 @@ namespace Practica03_MF0493
         private DateTime HireDate;
         private DateTime EnrollmentDate;
 
-        public Person()
+        public PersonManager()
         {
             this.PersonID++;
             this.LastName = "- desconocido -";
@@ -54,9 +54,9 @@ namespace Practica03_MF0493
         /// </summary>
         /// <param name="PersonID">Recibe el ID de la persona y lo busca</param>
         /// <returns>Devuelve la persona si todo es ok, si no devuelve un exception</returns>
-        public Person get(int PersonID)
+        public PersonManager get(int PersonID)
         {
-            Person xpersona = new Person(); // Me creo un objeto de tipo persona
+            PersonManager xpersona = new PersonManager(); // Me creo un objeto de tipo persona
             try
             {
                 // Creamos una conexion a la bd
@@ -64,7 +64,7 @@ namespace Practica03_MF0493
                 {
                     // Realizamos una consulta, donde vamos a buscar a una persona por su id
                     var consulta = from persona in db.Person where persona.PersonID == PersonID
-                                   select new Person
+                                   select new PersonManager
                                    {
                                        PersonID = persona.PersonID,
                                        LastName = persona.LastName,
@@ -114,7 +114,7 @@ namespace Practica03_MF0493
         /// <returns>Devuelve true </returns>
         public bool Remove(int PersonID)
         {
-            Person xpersona = new Person(); // Me creo un objeto de tipo persona
+            PersonManager xpersona = new PersonManager(); // Me creo un objeto de tipo persona
             try
             {
                 // Creamos una conexion a la bd
@@ -138,12 +138,12 @@ namespace Practica03_MF0493
         }
 
 
-        List<Person> IPerson.getAll()
+        List<PersonManager> IPerson.getAll()
         {
             throw new NotImplementedException();
         }
 
-        public int Add(Person p)
+        public int Add(PersonManager p)
         {
             throw new NotImplementedException();
         }

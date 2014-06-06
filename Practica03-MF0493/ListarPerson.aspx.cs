@@ -1,4 +1,5 @@
-﻿using System;
+using Practica03_MF0493.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace Practica03_MF0493
         {
             if (!this.IsPostBack)
             {
-                Person persona = new Person();
+                PersonManager persona = new PersonManager();
                 this.GridView1.DataSource = persona.getAll();
                 this.GridView1.DataBind();
                 var count = persona.getAll().Count;
@@ -25,7 +26,7 @@ namespace Practica03_MF0493
         {
             string codigo = e.Values["PersonID"].ToString();
 
-            Practica03_MF0493.Person persona = new Practica03_MF0493.Person();
+            PersonManager persona = new PersonManager();
             persona.Remove(Convert.ToInt32(codigo));
             this.GridView1.DataSource = persona.getAll();
             this.GridView1.DataBind();

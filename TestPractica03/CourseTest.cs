@@ -2,55 +2,67 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Practica03_MF0493.Models;
 using System.Collections.Generic;
+using Practica03_MF0493;
 
 namespace TestPractica03
 {
     [TestClass]
     public class CourseTest
     {
+        /// <summary>
+        /// Metodo getAllTest(). Se comprueba el número total de cursos en la base de datos.
+        /// </summary>
         [TestMethod]
         public void getAllTest()
         {
-            List<Practica03_MF0493.Models.Person> people = new List<Practica03_MF0493.Models.Person>();
-            Practica03_MF0493.Person persona = new Practica03_MF0493.Person();
-            people = persona.getAll();
-            Assert.AreEqual(people.Count, 44);
+            CourseManager curso = new CourseManager();
+
+            List<CourseManager> lista = curso.getAll();
+
+            Assert.AreEqual(lista.Count, 13);
+
         }
+
+        /// <summary>
+        /// Método de prueba. Dos pruebas unitarias. Obtenemos un curso a partir de un Id pasado por parámetro.
+        /// </summary>
         [TestMethod]
         public void getTest()
         {
-            Practica03_MF0493.Models.Person people = new Practica03_MF0493.Models.Person();
-            //Practica03_MF0493.Person persona = new Practica03_MF0493.Person();
+            CourseManager curso = new CourseManager();
+            CourseManager curso2 = new CourseManager();
 
-            //persona.get(6);
+            CourseManager cursoResultado=curso.get(1045);
+            CourseManager cursoResultado2 = curso.get(1050);
 
-            people.PersonID = 6;
 
             
-            Assert.AreEqual(people.FirstName, "Li");
+            Assert.AreEqual(cursoResultado.Title, "Calculus");
+            Assert.AreEqual(cursoResultado2.Title, "Chemistry");
         }
+
+        /// <summary>
+        /// Inserta y elimina un elemento de la base de datos.
+        /// </summary>
         [TestMethod]
-        public void addTest()
+        public void addRemoveTest()
         {
 
-            Practica03_MF0493.Models.Person people = new Practica03_MF0493.Models.Person();
-            people.FirstName = "Aitor";
-            people.LastName = "Tilla";
+            CourseManager course = new CourseManager();
 
-            Practica03_MF0493.Person persona = new Practica03_MF0493.Person();
+            course.CourseID = 666;
+            course.Credits = 45;
+            course.DepartmentID = 2;
+            course.Title = "Test";
+            
 
-            int idPerson = persona.Add(people);
+            int idCursoInsertado=course.Add(course);
+            bool delete= course.Remove(666);
 
-            Assert.AreEqual(people.PersonID, 41);
-        }
-        [TestMethod]
-        public void removeTest()
-        {
-            Practica03_MF0493.Person persona = new Practica03_MF0493.Person();
-
-            bool delete = persona.Remove(41);
+            Assert.AreEqual(idCursoInsertado, 666);
             Assert.AreEqual(delete, true);
         }
+       
 
     }
 }

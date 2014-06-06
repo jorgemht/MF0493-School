@@ -8,9 +8,9 @@ namespace Practica03_MF0493
 {
     interface IPerson
     {
-        List<Person> getAll();
-        Person get(int PersonID);
-        int Add(Person p);
+        List<PersonManager> getAll();
+        PersonManager get(int PersonID);
+        int Add(PersonManager p);
         bool Remove(int PersonID);
     }
 }

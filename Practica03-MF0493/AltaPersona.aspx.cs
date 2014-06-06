@@ -1,4 +1,5 @@
-﻿using System;
+using Practica03_MF0493.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +22,7 @@ namespace Practica03_MF0493
                 this.Validate();
                 if (this.IsValid)
                 {
-                    Practica03_MF0493.Models.Person persona = new Practica03_MF0493.Models.Person();
+                    Person persona = new Person();
 
                     persona.PersonID++;
                     persona.FirstName = this.Nombre_alumno.Text;
@@ -29,7 +30,7 @@ namespace Practica03_MF0493
                     persona.HireDate = Convert.ToDateTime(this.Fecha_alta.Text);
                     persona.EnrollmentDate = Convert.ToDateTime(this.Fecha_matricula.Text);
 
-                    Person p = new Person(); // Me creo un objeto de tipo persona
+                    PersonManager p = new PersonManager(); // Me creo un objeto de tipo persona
 
                     int PersonID = p.Add(persona); // Al objeto p le voy añadir el objeto persona
 
