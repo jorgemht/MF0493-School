@@ -19,7 +19,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                              ErrorMessage="El campo no se puede quedar vacio" ControlToValidate="Id_curso" CssClass="alert-danger"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                             ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{2}$" CssClass="alert-danger" ControlToValidate="Id_curso"></asp:RegularExpressionValidator>
+                             ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{4}$" CssClass="alert-danger" ControlToValidate="Id_curso"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
 
@@ -41,7 +41,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                              ErrorMessage="El campo no se puede quedar vacio" ControlToValidate="Creditos_curso" CssClass="alert-danger"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                             ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{2}$" CssClass="alert-danger" ControlToValidate="Creditos_curso"></asp:RegularExpressionValidator>
+                             ErrorMessage="Solo se admiten 4 numeros" ValidationExpression="^[0-9]{4}$" CssClass="alert-danger" ControlToValidate="Creditos_curso"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
 
@@ -52,7 +52,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                                  ErrorMessage="El campo no se puede quedar vacio" ControlToValidate="Departamento_curso" CssClass="alert-danger"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
-                                 ErrorMessage="Introduzca un numero de departamento válido (1,2,4,7)" ValidationExpression="^[1,2,4,7]{1}$" CssClass="alert-danger" ControlToValidate="Departamento_curso"></asp:RegularExpressionValidator>
+                                 ErrorMessage="Solo se admiten 2 numeros" ValidationExpression="^[0-9]{2}$" CssClass="alert-danger" ControlToValidate="Departamento_curso"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                         
