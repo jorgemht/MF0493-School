@@ -8,8 +8,11 @@
         <div class="row">
             <section class="panel panel-default col-md-8 col-md-offset-2">
               <header class="panel-heading text-center">
-                <asp:Button CssClass="btn btn-danger" ID="Button2" runat="server" Text="Volver al menu principal" OnClientClick="return confirm('¿Estas seguro?');" OnClick="volverMenu" />
-                <asp:Button ID="botonEnviar" runat="server" Text="Dar de alta a la persona" CssClass="btn btn-success" OnClick="addPersona" />
+                   &larr;
+                <asp:Button CssClass="btn btn-danger" ID="Button2" runat="server" Text="Volver al menu principal" 
+                    OnClientClick="return confirm('¿Estas seguro?');" OnClick="volverMenu" />
+                <asp:Button ID="botonEnviar" runat="server" Text="Dar de alta a la persona" CssClass="btn btn-success"
+                     OnClick="addPersona" />&rarr;
               </header>  
                   <div class="panel-body">
                   <article class="form-group">

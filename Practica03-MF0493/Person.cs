@@ -30,22 +30,15 @@ namespace Practica03_MF0493
         /// Metodo que nos da un listado de las personas
         /// </summary>
         /// <returns></returns>
-        public List<Person> getAll()
+        public List<Practica03_MF0493.Models.Person> getAll()
         {
-            List<Person> person = new List<Person>();
+            List<Practica03_MF0493.Models.Person> person = new List<Practica03_MF0493.Models.Person>();
             try
             {
                 using (cntSchool db = new cntSchool())
                 {
                     var consulta = from persona in db.Person
-                                   select new Person()
-                                   {
-                                       PersonID = persona.PersonID,
-                                       LastName = persona.LastName,
-                                       FirstName = persona.FirstName,
-                                       HireDate = (DateTime)persona.HireDate,
-                                       EnrollmentDate = (DateTime)persona.EnrollmentDate,
-                                   };
+                                   select persona;
 
                     person = consulta.ToList();
                 }
@@ -144,6 +137,11 @@ namespace Practica03_MF0493
             }           
         }
 
+
+        List<Person> IPerson.getAll()
+        {
+            throw new NotImplementedException();
+        }
 
         public int Add(Person p)
         {

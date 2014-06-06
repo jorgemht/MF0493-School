@@ -23,6 +23,6 @@
     </nav>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
-    <footer class="text-center">Copyright &copy; 2014 </footer>
+    <footer class="text-center col-md-4 col-md-offset-4">Copyright &copy; 2014 </footer>
 </body>
 </html>

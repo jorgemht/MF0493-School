@@ -14,12 +14,12 @@ namespace Practica03_MF0493
 
         }
 
-        protected void btnVolver_Click(object sender, EventArgs e)
+        protected void volverMenu(object sender, EventArgs e)
         {
             Response.Redirect("ListarCurso.aspx", true);
         }
 
-        protected void Enviar_Click(object sender, EventArgs e)
+        protected void addPersona(object sender, EventArgs e)
         {
              CourseManager curso = new CourseManager();
 
