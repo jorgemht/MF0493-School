@@ -18,6 +18,15 @@ namespace Practica03_MF0493
         private DateTime HireDate;
         private DateTime EnrollmentDate;
 
+        public Person()
+        {
+            this.PersonID++;
+            this.LastName = "- desconocido -";
+            this.FirstName = "- desconocido -";
+            this.HireDate = DateTime.Today;
+            this.EnrollmentDate = DateTime.Today;
+        }
+
         /// <summary>
         /// Metodo que nos da un listado de las personas
         /// </summary>

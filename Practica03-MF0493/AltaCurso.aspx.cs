@@ -14,9 +14,34 @@ namespace Practica03_MF0493
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx", true);
+            Response.Redirect("ListarCurso.aspx", true);
         }
-    }
+
+        protected void Enviar_Click(object sender, EventArgs e)
+        {
+             CourseManager curso = new CourseManager();
+
+             curso.CourseID=Int32.Parse(this.Id_curso.Text);
+             curso.Title = this.Nombre_curso.Text;
+             curso.Credits = Int32.Parse(this.Creditos_curso.Text);
+             curso.DepartmentID= Int32.Parse(this.Departamento_curso.Text);
+
+             int cursoAdd=curso.Add(curso);
+
+             if(cursoAdd!=-1)
+             {
+                 //TODO-OK
+             }
+             else
+             {
+                 //ERROR
+             }
+
+             Response.Redirect("Default.aspx", true);
+        }
+
+      
+     }
 }

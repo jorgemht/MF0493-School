@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Practica03_MF0493
 {
-    public class Course:ICurso
+    public class CourseManager:ICurso
     {
         /// <summary>
         /// Variable que representa el identificador del curso
@@ -41,21 +41,21 @@ namespace Practica03_MF0493
         /// <summary>
         /// Variable que representa al identificador de un departamento al que pertenece dicho curso
         /// </summary>
-        private int _DepartamentID;
-        public int DepartamentID
+        private int _DepartmentID;
+        public int DepartmentID
         {
-            get { return this._DepartamentID; }
-            set { this._DepartamentID = value; }
+            get { return this._DepartmentID; }
+            set { this._DepartmentID = value; }
         }
 
         /// <summary>
         /// Constructor por defecto del objeto Curso
         /// </summary>
-        public Course()
+        public CourseManager()
         {
             this.CourseID = 0;
             this.Credits = 0;
-            this.DepartamentID = 0;
+            this.DepartmentID = 0;
             this.Title = " ";
         }
 
@@ -66,11 +66,11 @@ namespace Practica03_MF0493
         /// <param name="cred">Créditos de un curso</param>
         /// <param name="depId">Identificador del departamento al que pertenece un curso</param>
         /// <param name="titulo">Título del curso</param>
-        public Course(int id,int cred, int depId,string titulo)
+        public CourseManager(int id,int cred, int depId,string titulo)
         {
             this.CourseID = id;
             this.Credits = cred;
-            this.DepartamentID = depId;
+            this.DepartmentID = depId;
             this.Title = titulo;
         }
 
@@ -84,28 +84,27 @@ namespace Practica03_MF0493
             if (obj == null || GetType() != obj.GetType())
                 return false;
 
-            Course cur = (Course)obj;
-            return (this.CourseID==cur.CourseID) && (this.Credits==cur.Credits) && (this.DepartamentID==cur.DepartamentID) && (this.Title==cur.Title);
+            CourseManager cur = (CourseManager)obj;
+            return (this.CourseID==cur.CourseID) && (this.Credits==cur.Credits) && (this.DepartmentID==cur.DepartmentID) && (this.Title==cur.Title);
         }
 
         /// <summary>
         /// Obtener todos los cursos de la base de datos
         /// </summary>
         /// <returns></returns>
-        public List<Course> getAll()
+        public List<Practica03_MF0493.CourseManager> getAll()
         {
-            List<Course> datos = new List<Course>();
+            List<Practica03_MF0493.CourseManager> datos = new List<Practica03_MF0493.CourseManager>();
             try
             {
                 using (cntSchool cnt = new cntSchool())
                 {
                     var resulta = from cur in cnt.Course
-
-                                  select new Course()
+                                  select new Practica03_MF0493.CourseManager()
                     {
                         CourseID = cur.CourseID,
                         Credits = cur.Credits,
-                        DepartamentID = cur.DepartmentID,
+                        DepartmentID = cur.DepartmentID,
                         Title = cur.Title
                     };
 
@@ -124,20 +123,20 @@ namespace Practica03_MF0493
         /// </summary>
         /// <param name="CourseID">Identificador del curso</param>
         /// <returns>Objeto curso</returns>
-        public Course get(int CourseID)
+        public CourseManager get(int CourseID)
         {
-            Course curso;
+            CourseManager curso;
             try
             {
                 using (cntSchool cnt = new cntSchool())
                 {
                     var resulta = from cur in cnt.Course
                                   where cur.CourseID==CourseID
-                                  select new Course()
+                                  select new CourseManager()
                                   {
                                       CourseID = cur.CourseID,
                                       Credits = cur.Credits,
-                                      DepartamentID = cur.DepartmentID,
+                                      DepartmentID = cur.DepartmentID,
                                       Title = cur.Title
                                   };
 
@@ -156,17 +155,17 @@ namespace Practica03_MF0493
         /// </summary>
         /// <param name="p">Objeto curso para añadir</param>
         /// <returns>Identificador del curso</returns>
-        public int Add(Course p)
+        public int Add(CourseManager p)
         {
             try
             {
                 using (cntSchool cnt = new cntSchool())
                 {
-                    Practica03_MF0493.Models.Course curso = new  Practica03_MF0493.Models.Course();
+                    Course curso = new  Course();
 
                     curso.CourseID = p.CourseID;
                     curso.Credits = p.Credits;
-                    curso.DepartmentID = p.DepartamentID;
+                    curso.DepartmentID = p.DepartmentID;
                     curso.Title = p.Title;
 
                     cnt.Course.Add(curso);
@@ -175,7 +174,7 @@ namespace Practica03_MF0493
                     return p.CourseID;
                 }
             }
-            catch
+            catch (Exception e)
             {
                 return -1;
             }

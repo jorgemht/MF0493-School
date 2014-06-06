@@ -9,9 +9,9 @@ namespace Practica03_MF0493
     interface ICurso
     {
 
-        List<Course> getAll();
-        Course get(int CourseID);
-        int Add(Course p);
+        List<Practica03_MF0493.CourseManager> getAll();
+        CourseManager get(int CourseID);
+        int Add(CourseManager p);
         bool Remove(int CourseID);
     }
 }
