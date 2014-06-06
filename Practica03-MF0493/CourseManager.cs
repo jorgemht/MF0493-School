@@ -112,7 +112,7 @@ namespace Practica03_MF0493
                 }
                 return datos;
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
                 return null;
             }

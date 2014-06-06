@@ -14,10 +14,22 @@ namespace Practica03_MF0493
         {
 
             CourseManager curso = new CourseManager();
-            GridView1.DataSource = curso.getAll();
-            GridView1.DataBind();
+            GridView2.DataSource = curso.getAll();
+            GridView2.DataBind();
+            var count = curso.getAll().Count;
+            this.contador.Text = Convert.ToString(count);
 
 
         }
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            string codigo = e.Values["CourseID"].ToString();
+
+            CourseManager curso = new CourseManager();
+            curso.Remove(Convert.ToInt32(codigo));
+            this.GridView2.DataSource = curso.getAll();
+            this.GridView2.DataBind();
+        }
+
     }
 }

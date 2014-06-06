@@ -1,6 +1,5 @@
 ﻿using Practica03_MF0493.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +9,7 @@ namespace Practica03_MF0493
     public class PersonManager:IPerson
     {
         /// <summary>
-        ///  Atributos del objeto Person
+        ///  Atributos del objeto 
         /// </summary>
         private int PersonID;
         private string LastName;
@@ -18,7 +17,7 @@ namespace Practica03_MF0493
         private DateTime HireDate;
         private DateTime EnrollmentDate;
 
-        public Person()
+        public PersonManager()
         {
             this.PersonID++;
             this.LastName = "- desconocido -";
@@ -31,9 +30,9 @@ namespace Practica03_MF0493
         /// Metodo que nos da un listado de las personas
         /// </summary>
         /// <returns></returns>
-        public List<PersonManager> getAll()
+        public List<Practica03_MF0493.Models.Person> getAll()
         {
-            List<PersonManager> person = new List<PersonManager>();
+            List<Practica03_MF0493.Models.Person> person = new List<Practica03_MF0493.Models.Person>();
             try
             {
                 using (cntSchool db = new cntSchool())
@@ -41,22 +40,9 @@ namespace Practica03_MF0493
                     var consulta = from persona in db.Person
                                    select persona;
 
-                    foreach (Person persona in consulta)
-                    {
-                        PersonManager perData = new PersonManager()
-                        {
-                            PersonID = persona.PersonID,
-                            LastName = persona.LastName,
-                            FirstName = persona.FirstName,
-                        };
-                        if (persona.HireDate.HasValue)
-                            perData.HireDate = new DateTime(persona.HireDate.Value.Ticks);
-                        if (persona.EnrollmentDate.HasValue)
-                            perData.EnrollmentDate = new DateTime(persona.EnrollmentDate.Value.Ticks);
-                        person.Add(perData);
-                    }
-                    return person;
+                    person = consulta.ToList();
                 }
+                return person;
             }
             catch (Exception ex)
             {
@@ -102,22 +88,24 @@ namespace Practica03_MF0493
         /// <param name="p">Recibe un objeto de tipo persona</param>
         /// <returns>Devuelve el ID de la persona, y si hay un fallo -1</returns>
         public int Add(Practica03_MF0493.Models.Person p)
+       /*Como tenemos dos clases llamadas Person, c# no sabe que tipo de objeto le estamos pasando, 
+            por eso tenemos que especificarle el namespace, que en nuestro caso es el namespace del objeto que hay en Models*/
         {
             try
             {
                 // Creamos una conexion a la bd
                 using (cntSchool db = new cntSchool())
                 {
-                   
-                    db.Person.Add(p);
-                    db.SaveChanges();
-                    return p.PersonID;
+                    db.Person.Add(p); // Añadimos el objeto a la BD
+                    db.SaveChanges(); // Guardamos los cambios
                 }
             }
             catch (Exception ex)
             {
-                return -1;
-            }        
+                return -1; // Si no se ha podido agregar a la persona, devolvemos -1.
+            }
+
+            return p.PersonID; // Si todo ha ido ok, devolvemos el ID de la persona
         }
         /// <summary>
         /// Metodo que se encarga de eliminar un objeto persona.
@@ -149,6 +137,11 @@ namespace Practica03_MF0493
             }           
         }
 
+
+        List<PersonManager> IPerson.getAll()
+        {
+            throw new NotImplementedException();
+        }
 
         public int Add(PersonManager p)
         {
