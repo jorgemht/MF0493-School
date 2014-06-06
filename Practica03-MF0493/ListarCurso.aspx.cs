@@ -1,4 +1,4 @@
-﻿using Practica03_MF0493.Models;
+using Practica03_MF0493.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Practica03_MF0493
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            CourseManager curso = new CourseManager();
+            CourseManager curso = new CourseManager(); 
             GridView2.DataSource = curso.getAll();
             GridView2.DataBind();
             var count = curso.getAll().Count;
