@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
         <div class="container body-content">
-            <h1>Listado de Alumnos</h1> 
+            <h1>Listado de Cursos</h1> 
             <div class="bg-success pull-right"> Total de cursos: <asp:Label ID="contador" runat="server" Text="Label"> </asp:Label> <span class="glyphicon glyphicon-fire"></span> </div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
