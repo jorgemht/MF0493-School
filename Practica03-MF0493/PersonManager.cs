@@ -1,4 +1,4 @@
-﻿using Practica03_MF0493.Models;
+using Practica03_MF0493.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace Practica03_MF0493
     public class PersonManager:IPerson
     {
         /// <summary>
-        ///  Atributos del objeto 
+        ///  Atributos del objeto Person Manager
         /// </summary>
         private int PersonID;
         private string LastName;
@@ -17,6 +17,9 @@ namespace Practica03_MF0493
         private DateTime HireDate;
         private DateTime EnrollmentDate;
 
+        /// <summary>
+        /// Constructor que me inicializa el objeto con unos valores por defecto.
+        /// </summary>
         public PersonManager()
         {
             this.PersonID++;
@@ -25,14 +28,29 @@ namespace Practica03_MF0493
             this.HireDate = DateTime.Today;
             this.EnrollmentDate = DateTime.Today;
         }
+        /// <summary>
+        /// Metodos get y set
+        /// </summary>
+        public string lastname
+        {
+            get { return this.LastName; }
+            set { this.LastName = value; }
+        }
+        public string firstname
+        {
+            get { return this.FirstName; }
+            set { this.FirstName = value; }
+        }
+
+        /***** Fin de los metodos get y set *****/
 
         /// <summary>
-        /// Metodo que nos da un listado de las personas
+        /// Metodo que nos lista la tabla personas de nuestra BD
         /// </summary>
         /// <returns></returns>
-        public List<Practica03_MF0493.Models.Person> getAll()
+        public List<Person> getAll()
         {
-            List<Practica03_MF0493.Models.Person> person = new List<Practica03_MF0493.Models.Person>();
+            List<Person> person = new List<Person>();
             try
             {
                 using (cntSchool db = new cntSchool())
@@ -50,7 +68,7 @@ namespace Practica03_MF0493
             }
         }
         /// <summary>
-        /// Metodo que nos busca una persona
+        /// Metodo que nos busca una persona a partir de su ID
         /// </summary>
         /// <param name="PersonID">Recibe el ID de la persona y lo busca</param>
         /// <returns>Devuelve la persona si todo es ok, si no devuelve un exception</returns>
@@ -69,8 +87,6 @@ namespace Practica03_MF0493
                                        PersonID = persona.PersonID,
                                        LastName = persona.LastName,
                                        FirstName = persona.FirstName,
-                                       HireDate = (DateTime)persona.HireDate,
-                                       EnrollmentDate = (DateTime)persona.EnrollmentDate,
                                    };
 
                     xpersona = consulta.First();
@@ -87,7 +103,7 @@ namespace Practica03_MF0493
         /// </summary>
         /// <param name="p">Recibe un objeto de tipo persona</param>
         /// <returns>Devuelve el ID de la persona, y si hay un fallo -1</returns>
-        public int Add(Practica03_MF0493.Models.Person p)
+        public int Add(Person p)
        /*Como tenemos dos clases llamadas Person, c# no sabe que tipo de objeto le estamos pasando, 
             por eso tenemos que especificarle el namespace, que en nuestro caso es el namespace del objeto que hay en Models*/
         {
@@ -114,7 +130,8 @@ namespace Practica03_MF0493
         /// <returns>Devuelve true </returns>
         public bool Remove(int PersonID)
         {
-            PersonManager xpersona = new PersonManager(); // Me creo un objeto de tipo persona
+            PersonManager xpersona = new PersonManager();
+            // Me creo un objeto de tipo persona
             try
             {
                 // Creamos una conexion a la bd
